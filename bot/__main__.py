@@ -106,7 +106,6 @@ def getHerokuDetails(h_api_key, h_app_name):
         else:
             abc += f"<b>APP USAGE:</b> {get_readable_time(AppQuotaUsed)}\n"
             abc += f"<b>OTHER APP:</b> {get_readable_time(OtherAppsUsage)}\n"
-            abc += f'<b>{CREDIT_NAME}</b>'
         return abc
     except Exception as g:
         LOGGER.error(g)
