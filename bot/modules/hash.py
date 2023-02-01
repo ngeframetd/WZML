@@ -80,14 +80,14 @@ def hash(update, context):
         except: pass
         return editMessage("Hashing error. Check Logs.", sent)
     # hash text
-    finishedText = "🍆 File: <code>{}</code>\n".format(filename)
-    finishedText += "🍓 MD5: <code>{}</code>\n".format(md5.hexdigest())
-    finishedText += "🍌 SHA1: <code>{}</code>\n".format(sha1.hexdigest())
-    finishedText += "🍒 SHA224: <code>{}</code>\n".format(sha224.hexdigest())
-    finishedText += "🍑 SHA256: <code>{}</code>\n".format(sha256.hexdigest())
-    finishedText += "🥭 SHA512: <code>{}</code>\n".format(sha512.hexdigest())
-    finishedText += "🍎 SHA384: <code>{}</code>\n".format(sha384.hexdigest())
-    timeTaken = f"🥚 Hash Time: <code>{TimeFormatter((time.time() - hashStartTime) * 1000)}</code>"
+    finishedText = "File: <code>{}</code>\n".format(filename)
+    finishedText += "MD5: <code>{}</code>\n".format(md5.hexdigest())
+    finishedText += "SHA1: <code>{}</code>\n".format(sha1.hexdigest())
+    finishedText += "SHA224: <code>{}</code>\n".format(sha224.hexdigest())
+    finishedText += "SHA256: <code>{}</code>\n".format(sha256.hexdigest())
+    finishedText += "SHA512: <code>{}</code>\n".format(sha512.hexdigest())
+    finishedText += "SHA384: <code>{}</code>\n".format(sha384.hexdigest())
+    timeTaken = f"Hash Time: <code>{TimeFormatter((time.time() - hashStartTime) * 1000)}</code>"
     editMessage(f"{timeTaken}\n{finishedText}", sent)
     try: os.remove(file)
     except: pass
