@@ -15,23 +15,23 @@ def authorize(update, context):
         user_id = reply_message.from_user.id
     if user_id:
         if user_id in AUTHORIZED_CHATS:
-            msg = 'User Already Authorized! 👤'
+            msg = 'User already authorized!'
         elif DB_URI is not None:
             msg = DbManger().user_auth(user_id)
             AUTHORIZED_CHATS.add(user_id)
         else:
             AUTHORIZED_CHATS.add(user_id)
-            msg = 'User Authorized 👤'
+            msg = 'User authorized!'
     else:
         chat_id = update.effective_chat.id
         if chat_id in AUTHORIZED_CHATS:
-            msg = 'Chat Already Authorized! 💬'
+            msg = 'Chat already authorized!'
         elif DB_URI is not None:
             msg = DbManger().user_auth(chat_id)
             AUTHORIZED_CHATS.add(chat_id)
         else:
             AUTHORIZED_CHATS.add(chat_id)
-            msg = 'Chat Authorized 💬'
+            msg = 'Chat authorized!'
     sendMessage(msg, context.bot, update.message)
 
 def unauthorize(update, context):
@@ -46,20 +46,20 @@ def unauthorize(update, context):
             if DB_URI is not None:
                 msg = DbManger().user_unauth(user_id)
             else:
-                msg = 'User Unauthorized 👤😅'
+                msg = 'User unauthorized!'
             AUTHORIZED_CHATS.remove(user_id)
         else:
-            msg = 'User Already Unauthorized! 👤😅'
+            msg = 'User already unauthorized!'
     else:
         chat_id = update.effective_chat.id
         if chat_id in AUTHORIZED_CHATS:
             if DB_URI is not None:
                 msg = DbManger().user_unauth(chat_id)
             else:
-                msg = 'Chat Unauthorized 💬😅'
+                msg = 'Chat unauthorized!'
             AUTHORIZED_CHATS.remove(chat_id)
         else:
-            msg = 'Chat Already Unauthorized! 💬😅'
+            msg = 'Chat already unauthorized!'
     sendMessage(msg, context.bot, update.message)
 
 def addSudo(update, context):
@@ -71,13 +71,13 @@ def addSudo(update, context):
         user_id = reply_message.from_user.id
     if user_id:
         if user_id in SUDO_USERS:
-            msg = 'Already Sudo! 🤔'
+            msg = 'Already sudo!'
         elif DB_URI is not None:
             msg = DbManger().user_addsudo(user_id)
             SUDO_USERS.add(user_id)
         else:
             SUDO_USERS.add(user_id)
-            msg = 'Promoted as Sudo 🤣'
+            msg = 'Promoted as sudo!'
     else:
         msg = "Give ID or Reply To message of whom you want to Promote."
     sendMessage(msg, context.bot, update.message)
@@ -105,23 +105,23 @@ def addleechlog(update, context):
         user_id = reply_message.from_user.id
     if user_id:
         if user_id in LEECH_LOG:
-            msg = 'Chat Already in Leech Logs'
+            msg = 'Chat already in leech logs!'
         elif DB_URI is not None:
             msg = DbManger().addleech_log(user_id)
             LEECH_LOG.add(user_id)
         else:
             LEECH_LOG.add(user_id)
-            msg = 'Chat Added in Leech Logs'
+            msg = 'Chat added in leech logs!'
     else:
         chat_id = update.effective_chat.id
         if chat_id in LEECH_LOG:
-            msg = 'Chat Already in Leech Logs'
+            msg = 'Chat already in leech logs!'
         elif DB_URI is not None:
             msg = DbManger().addleech_log(chat_id)
             LEECH_LOG.add(chat_id)
         else:
             LEECH_LOG.add(chat_id)
-            msg = 'Chat Added to Leech Logs'
+            msg = 'Chat added to leech logs!'
     sendMessage(msg, context.bot, update.message)
 
 def rmleechlog(update, context):
@@ -136,7 +136,7 @@ def rmleechlog(update, context):
             if DB_URI is not None:
                 msg = DbManger().rmleech_log(user_id)
             else:
-                msg = 'User removed from leech logs'
+                msg = 'User removed from leech logs!'
             LEECH_LOG.remove(user_id)
         else:
             msg = 'User does not exist in leech logs!'
@@ -161,13 +161,13 @@ def addPaid(update, context):
         user_id = reply_message.from_user.id
     if user_id:
         if user_id in PAID_USERS:
-            msg = 'Already a Paid User!'
+            msg = 'Already a paid user!'
         elif DB_URI is not None:
             msg = DbManger().user_addpaid(user_id)
             PAID_USERS.add(user_id)
         else:
             PAID_USERS.add(user_id)
-            msg = 'Promoted as Paid User'
+            msg = 'Promoted as paid user!'
     else:
         msg = "Give ID or Reply To message of whom you want to Promote as Paid User"
     sendMessage(msg, context.bot, update.message)
@@ -192,12 +192,12 @@ def sendAuthChats(update, context):
     user += '\n'.join(f"<code>{uid}</code>" for uid in AUTHORIZED_CHATS)
     sudo += '\n'.join(f"<code>{uid}</code>" for uid in SUDO_USERS)
     leechlog += '\n'.join(f"<code>{uid}</code>" for uid in LEECH_LOG)
-    sendMessage(f'<b><u>Authorized Chats💬 :</u></b>\n{user}\n<b><u>Sudo Users👤 :</u></b>\n{sudo}\n<b><u>Leech Log:</u></b>\n{leechlog}', context.bot, update.message)
+    sendMessage(f'<b><u>Authorized chats: </u></b>\n{user}\n<b><u>Sudo users: </u></b>\n{sudo}\n<b><u>Leech log: </u></b>\n{leechlog}', context.bot, update.message)
 
 def sendPaidDetails(update, context):
     paid = ''
     paid += '\n'.join(f"<code>{uid}</code>" for uid in PAID_USERS)
-    sendMessage(f'<b><u>Paid Users🤑  :</u></b>\n{paid}', context.bot, update.message)
+    sendMessage(f'<b><u>Paid users: </u></b>\n{paid}', context.bot, update.message)
 
 
 send_auth_handler = CommandHandler(command=BotCommands.AuthorizedUsersCommand, callback=sendAuthChats,
