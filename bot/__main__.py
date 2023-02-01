@@ -76,10 +76,10 @@ def getHerokuDetails(h_api_key, h_app_name):
             abc += f"<b>├ 👍🏻 FREE</b>: {get_readable_time(quota_remain)}\n"
         else:
             abc += f'<b></b>\n'
-            abc += f'<b>╭─《 HEROKU STATS 》</b>\n'
-            abc += f"<b>├ FULL</b>: {get_readable_time(account_quota)}\n"
-            abc += f"<b>├ USED</b>: {get_readable_time(quota_used)}\n"
-            abc += f"<b>├ FREE</b>: {get_readable_time(quota_remain)}\n"
+            abc += f'<b>HEROKU STATS</b>\n'
+            abc += f"<b>FULL:</b> {get_readable_time(account_quota)}\n"
+            abc += f"<b>USED:</b> {get_readable_time(quota_used)}\n"
+            abc += f"<b>FREE:</b> {get_readable_time(quota_remain)}\n"
         # App Quota
         AppQuotaUsed = 0
         OtherAppsUsage = 0
@@ -104,9 +104,9 @@ def getHerokuDetails(h_api_key, h_app_name):
             abc += f"<b>├ 🗑️ OTHER APP:</b> {get_readable_time(OtherAppsUsage)}\n"
             abc += f'<b>╰─《 ☣️ {CREDIT_NAME} ☣️ 》</b>'
         else:
-            abc += f"<b>├ APP USAGE:</b> {get_readable_time(AppQuotaUsed)}\n"
-            abc += f"<b>├ OTHER APP:</b> {get_readable_time(OtherAppsUsage)}\n"
-            abc += f'<b>╰─《 {CREDIT_NAME} 》</b>'
+            abc += f"<b>APP USAGE:</b> {get_readable_time(AppQuotaUsed)}\n"
+            abc += f"<b>OTHER APP:</b> {get_readable_time(OtherAppsUsage)}\n"
+            abc += f'<b>{CREDIT_NAME}</b>'
         return abc
     except Exception as g:
         LOGGER.error(g)
@@ -173,16 +173,16 @@ def stats(update, context):
                     f'<b>╰ 🔻 Download Data:</b> {recv}\n\n'
 
     else:
-            stats = f'<b>╭─《 BOT STATISTICS 》</b>\n' \
-                    f'<b>├  Updated On: </b>{last_commit}\n'\
-                    f'<b>├  Uptime: </b>{currentTime}\n'\
-                    f'<b>├  OS Uptime: </b>{osUptime}\n'\
-                    f'<b>├  CPU:</b> [{progress_bar(cpuUsage)}] {cpuUsage}%\n'\
-                    f'<b>├  RAM:</b> [{progress_bar(mem_p)}] {mem_p}%\n'\
-                    f'<b>├  Disk:</b> [{progress_bar(disk)}] {disk}%\n'\
-                    f'<b>├  Disk Free:</b> {free}\n'\
-                    f'<b>├  Upload Data:</b> {sent}\n'\
-                    f'<b>╰  Download Data:</b> {recv}\n\n'
+            stats = f'<b>BOT STATISTICS</b>\n' \
+                    f'<b>Updated On:</b> {last_commit}\n'\
+                    f'<b>Uptime:</b> {currentTime}\n'\
+                    f'<b>OS Uptime:</b> {osUptime}\n'\
+                    f'<b>CPU:</b> [{progress_bar(cpuUsage)}] {cpuUsage}%\n'\
+                    f'<b>RAM:</b> [{progress_bar(mem_p)}] {mem_p}%\n'\
+                    f'<b>Disk:</b> [{progress_bar(disk)}] {disk}%\n'\
+                    f'<b>Disk Free:</b> {free}\n'\
+                    f'<b>Upload Data:</b> {sent}\n'\
+                    f'<b>Download Data:</b> {recv}\n\n'
 
 
 
@@ -205,14 +205,14 @@ def stats(update, context):
                      f'<b>├ 💣 Total Tasks: </b>{total_task}\n'\
                      f'<b>╰ 🔫 User Tasks: </b>{user_task}\n\n'
         else: 
-            stats += f'<b>╭─《  BOT LIMITS  》</b>\n'\
-                     f'<b>├  Torrent/Direct: </b>{torrent_direct}\n'\
-                     f'<b>├  Zip/Unzip: </b>{zip_unzip}\n'\
-                     f'<b>├  Leech: </b>{leech_limit}\n'\
-                     f'<b>├  Clone: </b>{clone_limit}\n'\
-                     f'<b>├  Mega: </b>{mega_limit}\n'\
-                     f'<b>├  Total Tasks: </b>{total_task}\n'\
-                     f'<b>╰  User Tasks: </b>{user_task}\n\n'
+            stats += f'<b>BOT LIMITS</b>\n'\
+                     f'<b>Torrent/Direct: </b>{torrent_direct}\n'\
+                     f'<b>Zip/Unzip: </b>{zip_unzip}\n'\
+                     f'<b>Leech: </b>{leech_limit}\n'\
+                     f'<b>Clone: </b>{clone_limit}\n'\
+                     f'<b>Mega: </b>{mega_limit}\n'\
+                     f'<b>Total Tasks: </b>{total_task}\n'\
+                     f'<b>User Tasks: </b>{user_task}\n\n'
 
                 
 
@@ -302,7 +302,7 @@ def ping(update, context):
         editMessage(f'{end_time - start_time} ms 🔥', reply)
     else:
         start_time = int(round(time() * 1000))
-        reply = sendMessage("Starting_Ping ", context.bot, update.message)
+        reply = sendMessage("Starting Ping ", context.bot, update.message)
         end_time = int(round(time() * 1000))
         editMessage(f'{end_time - start_time} ms ', reply)
 
@@ -316,7 +316,7 @@ Choose a help category:
 '''
 
 help_string_telegraph_user = f'''
-<b><u>👤 User Commands</u></b>
+<b><u>User Commands</u></b>
 <br><br>
 • <b>/{BotCommands.HelpCommand}</b>: To get this message
 <br><br>
@@ -402,7 +402,7 @@ help_user = telegraph.create_page(
     content=help_string_telegraph_user)["path"]
 
 help_string_telegraph_admin = f'''
-<b><u>🛡️ Admin Commands</u></b>
+<b><u>Admin Commands</u></b>
 <br><br>
 • <b>/{BotCommands.PingCommand}</b>: Check how long it takes to Ping the Bot
 <br><br>
@@ -549,22 +549,22 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = f"😎Restarted successfully❗\n"
-                    msg += f"📅DATE: {date}\n"
-                    msg += f"⌚TIME: {time}\n"
-                    msg += f"🌐TIMEZONE: {TIMEZONE}\n"
+                    msg = f"<b>Restarted successfully!</b>\n"
+                    msg += f"<b>DATE:</b> {date}\n"
+                    msg += f"<b>TIME:</b> {time}\n"
+                    msg += f"<b>TIMEZONE:</b> {TIMEZONE}\n"
                 else:
-                    msg = f"😎Bot Restarted!\n"
-                    msg += f"📅DATE: {date}\n"
-                    msg += f"⌚TIME: {time}\n"
-                    msg += f"🌐TIMEZONE: {TIMEZONE}"
+                    msg = f"Bot restarted!\n"
+                    msg += f"<b>DATE:</b> {date}\n"
+                    msg += f"<b>TIME:</b> {time}\n"
+                    msg += f"<b>TIMEZONE:</b> {TIMEZONE}"
 
                 for tag, links in data.items():
                      msg += f"\n{tag}: "
                      for index, link in enumerate(links, start=1):
                          msg += f" <a href='{link}'>{index}</a> |"
                          if len(msg.encode()) > 4000:
-                             if '😎Restarted successfully❗' in msg and cid == chat_id:
+                             if '<b>Restarted successfully!</b>' in msg and cid == chat_id:
                                  bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
                                  osremove(".restartmsg")
                              else:
@@ -573,7 +573,7 @@ def main():
                                  except Exception as e:
                                      LOGGER.error(e)
                              msg = ''
-                if '😎Restarted successfully❗' in msg and cid == chat_id:
+                if '<b>Restarted successfully</b>' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
                      osremove(".restartmsg")
                 else:
@@ -585,11 +585,11 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        msg = f"😎Restarted successfully❗\n📅DATE: {date}\n⌚TIME: {time}\n🌐TIMEZONE: {TIMEZONE}\n"
+        msg = f"<b>Restarted successfully!</b>\n<b>DATE:</b> {date}\n<b>TIME:</b> {time}\n<b>TIMEZONE:</b> {TIMEZONE}\n"
         bot.edit_message_text(msg, chat_id, msg_id)
         osremove(".restartmsg")
     elif not notifier_dict and AUTHORIZED_CHATS:
-        text = f"😎Bot Restarted❗ \n📅DATE: {date} \n⌚TIME: {time} \n🌐TIMEZONE: {TIMEZONE}"
+        text = f"<b>Bot restarted!</b>\n<b>DATE:</b> {date} \n<b>TIME:</b> {time} \n<b>TIMEZONE:</b> {TIMEZONE}"
         for id_ in AUTHORIZED_CHATS:
             try:
                 bot.sendMessage(chat_id=id_, text=text, parse_mode=ParseMode.HTML)
@@ -614,7 +614,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("💥𝐁𝐨𝐭 𝐒𝐭𝐚𝐫𝐭𝐞𝐝❗")
+    LOGGER.info("Bot started!")
     signal(SIGINT, exit_clean_up)
 
 app.start()
