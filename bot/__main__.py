@@ -133,7 +133,7 @@ def stats(update, context):
             last_commit = check_output(["git log -1 --date=short --pretty=format:'%cd \n<b>├</b> 🛠<b>From</b> %cr'"], shell=True).decode()
             botVersion = check_output(["git log -1 --date=format:v%y.%m%d.%H%M --pretty=format:%cd"], shell=True).decode()
         else:
-            last_commit = check_output(["git log -1 --date=short --pretty=format:'%cd \n<b></b> <b>From</b> %cr'"], shell=True).decode()
+            last_commit = check_output(["git log -1 --date=short --pretty=format:'%cd \n<b></b><b>From</b> %cr'"], shell=True).decode()
             botVersion = check_output(["git log -1 --date=format:v%y.%m%d.%H%M --pretty=format:%cd"], shell=True).decode()
     else:
         botVersion = 'No UPSTREAM_REPO'
