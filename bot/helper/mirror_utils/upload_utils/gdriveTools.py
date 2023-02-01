@@ -270,7 +270,7 @@ class GoogleDriveHelper:
     def __create_directory(self, directory_name, parent_id):
         file_metadata = {
             "name": directory_name,
-            "description": "Uploaded by Mirror-leech-telegram-bot",
+            "description": directory_name,
             "mimeType": self.__G_DRIVE_DIR_MIME_TYPE
         }
         if parent_id is not None:
@@ -288,7 +288,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': f'{GD_INFO}',
+            'description': file_name,
             'mimeType': mime_type,
         }
         if parent_id is not None:
