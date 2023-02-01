@@ -66,8 +66,8 @@ def _clone(message, bot):
                     uname = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
                 buttons = ButtonMaker()
                 chat_u = CHANNEL_USERNAME.replace("@", "")
-                buttons.buildbutton("👉🏻 CHANNEL LINK 👈🏻", f"https://t.me/{chat_u}")
-                help_msg = f"Dᴇᴀʀ {uname},\nYᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ᴍʏ Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ Bᴏᴛ \n\nCʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴇʟᴏᴡ Bᴜᴛᴛᴏɴ ᴛᴏ ᴊᴏɪɴ ᴍʏ Cʜᴀɴɴᴇʟ."
+                buttons.buildbutton("CHANNEL LINK", f"https://t.me/{chat_u}")
+                help_msg = f"Dear {uname},\nYou need to join my channel to use the Bot\n\nClick me on the below button to join my channel."
                 reply_message = sendMarkup(help_msg, bot, message, buttons.build_menu(2))
                 Thread(target=auto_delete_message, args=(bot, message, reply_message)).start()
                 return reply_message
@@ -76,7 +76,7 @@ def _clone(message, bot):
             
     if BOT_PM and message.chat.type != 'private':
         try:
-            msg1 = f'Added your Requested link to Download\n'
+            msg1 = f'Added your requested link to Download\n'
             send = bot.sendMessage(message.from_user.id, text=msg1)
             send.delete()
         except Exception as e:
@@ -87,7 +87,7 @@ def _clone(message, bot):
             botstart = f"http://t.me/{b_uname}"
             buttons.buildbutton("Click Here to Start Me", f"{botstart}")
             startwarn = f"Dear {uname},\n\n<b>I found that you haven't started me in PM (Private Chat) yet.</b>\n\n" \
-                        f"From now on i will give link and leeched files in PM and log channel only"
+                        f"From now on I will give link and leeched files in PM and log channel only"
             message = sendMarkup(startwarn, bot, message, buttons.build_menu(2))
             return
 
@@ -97,14 +97,14 @@ def _clone(message, bot):
     if user_id != OWNER_ID and user_id not in SUDO_USERS and user_id not in PAID_USERS:
         if PAID_SERVICE is True:
             if TOTAL_TASKS_LIMIT == total_task:
-                return sendMessage(f"<b>Bᴏᴛ Tᴏᴛᴀʟ Tᴀsᴋ Lɪᴍɪᴛ : {TOTAL_TASKS_LIMIT}\nTᴀsᴋs Pʀᴏᴄᴇssɪɴɢ : {total_task}\n#total limit exceed </b>\n#Buy Paid Service", bot ,message)
+                return sendMessage(f"<b>Bot total task limit: {TOTAL_TASKS_LIMIT}\nTasks processing: {total_task}\n#total limit exceed </b>\n#Buy Paid Service", bot ,message)
             if USER_TASKS_LIMIT == get_user_task(user_id):
-                return sendMessage(f"<b>Bᴏᴛ Usᴇʀ Tᴀsᴋ Lɪᴍɪᴛ : {USER_TASKS_LIMIT} \nYᴏᴜʀ Tᴀsᴋs : {get_user_task(user_id)}\n#user limit exceed</b>\n#Buy Paid Service", bot ,message)
+                return sendMessage(f"<b>Bot total task limit: {USER_TASKS_LIMIT} \nYour tasks: {get_user_task(user_id)}\n#user limit exceed</b>\n#Buy Paid Service", bot ,message)
         else:
             if TOTAL_TASKS_LIMIT == total_task:
-                return sendMessage(f"<b>Bᴏᴛ Tᴏᴛᴀʟ Tᴀsᴋ Lɪᴍɪᴛ : {TOTAL_TASKS_LIMIT}\nTᴀsᴋs Pʀᴏᴄᴇssɪɴɢ : {total_task}\n#total limit exceed </b>", bot ,message)
+                return sendMessage(f"<b>Bot total task limit: {TOTAL_TASKS_LIMIT}\nTasks processing: {total_task}\n#total limit exceed </b>", bot ,message)
             if USER_TASKS_LIMIT == get_user_task(user_id):
-                return sendMessage(f"<b>Bᴏᴛ Usᴇʀ Tᴀsᴋ Lɪᴍɪᴛ : {USER_TASKS_LIMIT} \nYᴏᴜʀ Tᴀsᴋs : {get_user_task(user_id)}\n#user limit exceed</b>", bot ,message)
+                return sendMessage(f"<b>Bot total task limit: {USER_TASKS_LIMIT} \nYour tasks: {get_user_task(user_id)}\n#user limit exceed</b>", bot ,message)
 
     if user_id != OWNER_ID and user_id not in SUDO_USERS and user_id not in PAID_USERS:
         time_gap = timegap_check(message)
@@ -208,7 +208,7 @@ def _clone(message, bot):
                     if EMOJI_THEME is True:
                         cc = f'\n<b>╰👤 #Clone_By: </b>{tag}\n\n'
                     else:
-                        cc = f'\n<b>╰ #Clone_By: </b>{tag}\n\n'
+                        cc = f'\n<b>cc: </b>{tag}\n\n'
                     if PICS:
                         sendPhoto(result + cc, bot, message, random.choice(PICS), button)
                     else:
@@ -252,7 +252,7 @@ def _clone(message, bot):
                             if EMOJI_THEME is True:
                                 cc = f'\n<b>╰👤 #Clone_By: </b>{tag}\n\n'
                             else:
-                                cc = f'\n<b>╰ #Clone_By: </b>{tag}\n\n'
+                                cc = f'\n<b>cc: </b>{tag}\n\n'
                             if PICS:
                                 sendPhoto(result + cc, bot, message, random.choice(PICS), button)
                             else:
@@ -275,9 +275,9 @@ def _clone(message, bot):
             slmsg += f"├📐 Size: {size}\n"
             slmsg += f"╰👥 Added by: {tag} | <code>{user_id}</code>\n\n"
         else:
-            slmsg = f"╭ Name: <{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
-            slmsg += f"├ Size: {size}\n"
-            slmsg += f"╰ Added by: {tag} | <code>{user_id}</code>\n\n"
+            slmsg = f"Name: <{NAME_FONT}>{escape(name)}</{NAME_FONT}>\n"
+            slmsg += f"Size: {size}\n"
+            slmsg += f"Added by: {tag} | <code>{user_id}</code>\n\n"
         if LINK_LOGS:
                 try:
                     upper = f"‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒\n"
@@ -302,7 +302,7 @@ def _clone(message, bot):
         if EMOJI_THEME is True:
             cc = f'\n<b>╰👤 #Clone_By: </b>{tag}\n\n'
         else:
-            cc = f'\n<b>╰ #Clone_By: </b>{tag}\n\n'
+            cc = f'\n<b>cc: </b>{tag}\n\n'
         if button in ["cancelled", ""]:
             sendMessage(f"{tag} {result}", bot, message)
         else:
