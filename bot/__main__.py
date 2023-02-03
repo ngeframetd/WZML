@@ -75,11 +75,11 @@ def getHerokuDetails(h_api_key, h_app_name):
             abc += f"<b>├ 👎🏻 USED</b>: {get_readable_time(quota_used)}\n"
             abc += f"<b>├ 👍🏻 FREE</b>: {get_readable_time(quota_remain)}\n"
         else:
-            ##abc += f'<b></b>\n'
-            ##abc += f'<b>HEROKU STATS</b>\n'
-            ##3abc += f"<b>FULL:</b> {get_readable_time(account_quota)}\n"
-            ##abc += f"<b>USED:</b> {get_readable_time(quota_used)}\n"
-            ##abc += f"<b>FREE:</b> {get_readable_time(quota_remain)}\n"
+            abc += f''
+            abc += f''
+            abc += f""
+            abc += f""
+            abc += f""
         # App Quota
         AppQuotaUsed = 0
         OtherAppsUsage = 0
@@ -104,8 +104,8 @@ def getHerokuDetails(h_api_key, h_app_name):
             abc += f"<b>├ 🗑️ OTHER APP:</b> {get_readable_time(OtherAppsUsage)}\n"
             abc += f'<b>╰─《 ☣️ {CREDIT_NAME} ☣️ 》</b>'
         else:
-            ##abc += f"<b>APP USAGE:</b> {get_readable_time(AppQuotaUsed)}\n"
-            ##abc += f"<b>OTHER APP:</b> {get_readable_time(OtherAppsUsage)}\n"
+            abc += f""
+            abc += f""
         return abc
     except Exception as g:
         LOGGER.error(g)
